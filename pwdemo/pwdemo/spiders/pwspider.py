@@ -14,5 +14,5 @@ class PwspiderSpider(scrapy.Spider):
     def parse(self, response):
         yield {
             'text': response.text,
-            'lolke': response.text,
+            'lolkep': response.text,
         }
