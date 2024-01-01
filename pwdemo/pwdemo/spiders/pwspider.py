@@ -17,6 +17,8 @@ class PwspiderSpider(scrapy.Spider):
                              ))
 
     async def parse(self, response):
-        yield {
-            'text': response.text,
-        }
+        for product in response.css('div.card-body'):
+            yield {
+                'title': product.css('h3::text').get(),
+                'price': product.css('div.form-group label::text').get(),
+            }
